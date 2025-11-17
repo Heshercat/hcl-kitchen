@@ -19,7 +19,7 @@ resource "aws_s3_bucket" "example" {
   force_destroy = true
 
   tags = {
-    Name        = "My bucket - Check Dry run - commit"
+    Name        = "My bucket - Check Dry run - commit - test"
     Environment = "Test"
   }
 }
