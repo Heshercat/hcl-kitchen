@@ -10,7 +10,7 @@ terraform {
 resource "time_static" "now" {}
 
 provider "aws" {
-  region = "us-east-2"
+  region = "us-west-2"
 }
 
 resource "aws_s3_bucket" "example" {
