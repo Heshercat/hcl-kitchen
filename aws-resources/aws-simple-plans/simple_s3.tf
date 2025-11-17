@@ -15,11 +15,11 @@ provider "aws" {
 
 resource "aws_s3_bucket" "example" {
   count = 10
-  bucket = "alfiia-s3-${count.index}-simple-${replace(time_static.now.unix, "/[^0-9]/", "")}"
+  bucket = "test-alfiia-s3-${count.index}-simple-${replace(time_static.now.unix, "/[^0-9]/", "")}"
   force_destroy = true
 
   tags = {
     Name        = "My bucket - Check Dry run - commit - test"
-    Environment = "Test"
+    Environment = "Test new tag"
   }
 }
