@@ -14,8 +14,8 @@ terraform {
       passphrase = var.state_encryption_passphrase
 
       # Optional, defaults are fine for a simple setup
-      # iterations = 200000
-      # salt_length = 16
+       iterations = 200000
+       salt_length = 16
     }
 
     method "aes_gcm" "default" {
