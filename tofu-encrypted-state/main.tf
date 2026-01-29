@@ -37,3 +37,9 @@ resource "null_resource" "example" {
     changed_at = timestamp()
   }
 }
+
+resource "null_resource" "example2" {
+  triggers = {
+    changed_at = timestamp()
+  }
+}
