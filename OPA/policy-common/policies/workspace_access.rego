@@ -32,9 +32,12 @@ deny["User is in a denied group for this workspace"] if {
   group_match(a.deny_groups, user_groups)
 }
 
-deny["User is not allowed for this workspace"] if {
-  a := ws_access(workspace_key)
+deny[sprintf("DEBUG email=%v teams=%v groups=%v", [user_email, teams, user_groups])] if { true }
 
-  not email_in(a.allow_users, user_email)
-  not group_match(a.allow_groups, user_groups)
-}
+
+# deny["User is not allowed for this workspace"] if {
+# a := ws_access(workspace_key)
+
+#  not email_in(a.allow_users, user_email)
+#  not group_match(a.allow_groups, user_groups)
+# }
