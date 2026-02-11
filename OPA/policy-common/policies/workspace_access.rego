@@ -27,7 +27,6 @@ deny["User is explicitly denied for this workspace"] if {
 }
 
 deny["User is in a denied group for this workspace"] if {
-deny["User is in a denied group for this workspace"] if {
   a := ws_access(workspace_key)
   group_match(a.deny_groups, user_groups)
 }
