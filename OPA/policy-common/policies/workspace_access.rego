@@ -5,8 +5,10 @@ import input.tfrun as tfrun
 
 
 workspace_key := tfrun.workspace.name
-user_email    := tfrun.created_by.email
-user_groups   := [t.name | some i; t := input.created_by.teams[i]; t.name]
+created_by := object.get(tfrun, "created_by", object.get(input, "created_by", {}))
+user_email := object.get(created_by, "email", "")
+teams      := object.get(created_by, "teams", [])
+user_groups := { team.name | some i; team := teams[i]; team.name }
 
 # Helpers (safe, no "_" in negation)
 email_in(list, email) if {
@@ -14,10 +16,9 @@ email_in(list, email) if {
   list[i] == email
 }
 
-group_in(list, groups) if {
+group_match(list, groups_set) if {
   some i
-  some j
-  list[i] == groups[j]
+  groups_set[list[i]]
 }
 
 deny["User is explicitly denied for this workspace"] if {
@@ -26,13 +27,14 @@ deny["User is explicitly denied for this workspace"] if {
 }
 
 deny["User is in a denied group for this workspace"] if {
+deny["User is in a denied group for this workspace"] if {
   a := ws_access(workspace_key)
-  group_in(a.deny_groups, user_groups)
+  group_match(a.deny_groups, user_groups)
 }
 
 deny["User is not allowed for this workspace"] if {
   a := ws_access(workspace_key)
 
   not email_in(a.allow_users, user_email)
-  not group_in(a.allow_groups, user_groups)
+  not group_match(a.allow_groups, user_groups)
 }
