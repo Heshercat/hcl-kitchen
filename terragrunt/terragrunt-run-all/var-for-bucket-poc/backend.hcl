@@ -7,7 +7,7 @@ remote_state {
   config = {
     bucket         = "alfiia-terraform-state-bucket"
     key            = "${path_relative_to_include()}/terraform.tfstate" // TO DO: check if possible expose ws var here
-    region         = "us-east-1"
+    region         = "us-west-2"
     encrypt        = true
   }
 }
