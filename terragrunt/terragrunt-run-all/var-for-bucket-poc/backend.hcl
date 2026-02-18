@@ -1,5 +1,5 @@
 locals {
-  state_prefix = get_env("TG_STATE_PREFIX")
+  state_prefix = get_env("SCALR_WORKSPACE_ID")
 }
 
 remote_state {
