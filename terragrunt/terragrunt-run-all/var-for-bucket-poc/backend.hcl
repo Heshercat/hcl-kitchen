@@ -1,3 +1,7 @@
+locals {
+  state_prefix = get_env("TG_STATE_PREFIX")
+}
+
 remote_state {
   backend = "s3"
   generate = {
@@ -6,7 +10,7 @@ remote_state {
   }
   config = {
     bucket         = "alfiia-terraform-state-bucket"
-    key            = "${path_relative_to_include()}/terraform.tfstate" // TO DO: check if possible expose ws var here
+    key            = "${local.state_prefix}/${path_relative_to_include()}/terraform.tfstate"
     region         = "us-west-2"
     encrypt        = true
   }
