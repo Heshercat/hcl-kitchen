@@ -8,5 +8,5 @@ terraform {
 
 inputs = {
   module_name = "unit-a"
-  resource_id = "resource-001"
+  resource_id = "resource-A"
 }
