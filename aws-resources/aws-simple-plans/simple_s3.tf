@@ -10,12 +10,10 @@ terraform {
 resource "time_static" "now" {}
 
 provider "aws" {
-  alias = "deploy"
   region = "us-west-2"
 }
 
 resource "aws_s3_bucket" "example" {
-  provider = aws.deploy
   count = 10
   bucket = "alfiia-s3-${count.index}-simple-${replace(time_static.now.unix, "/[^0-9]/", "")}"
   force_destroy = true
