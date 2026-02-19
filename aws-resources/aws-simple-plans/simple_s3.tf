@@ -7,18 +7,6 @@ terraform {
   }
 }
 
-resource "null_resource" "debug_override" {
-  provisioner "local-exec" {
-    command = "cat scalr_override.tf.json || true"
-  }
-}
-
-resource "null_resource" "debug_creds" {
-  provisioner "local-exec" {
-    command = "echo '=== AWS creds ===' && cat /opt/data/aws-shared-credentials || true"
-  }
-}
-
 resource "time_static" "now" {}
 
 provider "aws" {
