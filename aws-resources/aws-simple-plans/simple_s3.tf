@@ -7,6 +7,12 @@ terraform {
   }
 }
 
+resource "null_resource" "debug_override" {
+  provisioner "local-exec" {
+    command = "cat scalr_override.tf.json || true"
+  }
+}
+
 resource "time_static" "now" {}
 
 provider "aws" {
