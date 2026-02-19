@@ -10,6 +10,7 @@ terraform {
 resource "time_static" "now" {}
 
 provider "aws" {
+  alias = "deploy"
   region = "us-west-2"
 }
 
