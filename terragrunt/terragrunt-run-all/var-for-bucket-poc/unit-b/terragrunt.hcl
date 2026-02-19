@@ -7,6 +7,6 @@ terraform {
 }
 
 inputs = {
-  module_name = "module-b"
+  module_name = "unit-b"
   resource_id = "resource-B"
 }
