@@ -13,6 +13,12 @@ resource "null_resource" "debug_override" {
   }
 }
 
+resource "null_resource" "debug_creds" {
+  provisioner "local-exec" {
+    command = "echo '=== AWS creds ===' && cat /opt/data/aws-shared-credentials || true"
+  }
+}
+
 resource "time_static" "now" {}
 
 provider "aws" {
