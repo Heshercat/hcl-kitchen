@@ -5,7 +5,7 @@ variable "module_name" {
 }
 
 variable "resource_id" {
-  description = "A unique identifier for the resource"
+  description = "A unique identifier for the resource - Check webhook trigger"
   type        = string
   default = "test_resource_id"
 }
