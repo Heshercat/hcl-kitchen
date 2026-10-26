@@ -1,0 +1,3 @@
+# Automatically loaded when Terragrunt runs from this directory.
+# Select every unit except module-e.
+./** | !./module-e/**
