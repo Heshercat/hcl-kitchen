@@ -1,4 +1,4 @@
 # Automatically loaded when Terragrunt runs from this directory.
 # Each line is a filter query; these select module-a and module-c.
- ./module-a
+ ./module-b
 # ./module-c/**
